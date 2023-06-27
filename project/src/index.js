@@ -15,7 +15,7 @@ $fx.params([
     name: "A number/float64",
     type: "number",
     //default: Math.PI,
-    update: "code-driven",
+    update: "sync", // "code-driven",
     options: {
       min: 1,
       max: 10,
@@ -27,7 +27,7 @@ $fx.params([
     id: "bigint_id",
     name: "A bigint",
     type: "bigint",
-    update: "code-driven",
+    update: "sync", // "code-driven",
     //default: BigInt(Number.MAX_SAFE_INTEGER * 2),
     options: {
       min: Number.MIN_SAFE_INTEGER * 4,
@@ -50,7 +50,7 @@ $fx.params([
     id: "select_id",
     name: "A selection",
     type: "select",
-    update: "code-driven",
+    update: "sync", // "code-driven",
     //default: "pear",
     options: {
       options: ["apple", "orange", "pear"],
@@ -60,21 +60,21 @@ $fx.params([
     id: "color_id",
     name: "A color",
     type: "color",
-    update: "code-driven",
+    update: "sync", // "code-driven",
     //default: "ff0000",
   },
   {
     id: "boolean_id",
     name: "A boolean",
     type: "boolean",
-    update: "code-driven",
+    update: "sync", // "code-driven",
     //default: true,
   },
   {
     id: "string_id",
     name: "A string",
     type: "string",
-    update: "code-driven",
+    update: "sync", // "code-driven",
     //default: "hello",
     options: {
       minLength: 1,
