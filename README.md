@@ -1,3 +1,15 @@
+# fx(hash) boilerplate 2.0 with p5.js
+
+This is the p5.js version of fx(hash) boilerplate 2.0.
+
+```
+npm run start
+npm run build
+```
+
+Here is the original content:
+---
+
 # fx(hash) boilerplate 2.0
 
 A boilerplate to automate and ease the creation of Generative Tokens on fx(hash) using fx(params).
