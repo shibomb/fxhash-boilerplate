@@ -6,7 +6,7 @@ function setup() {
   const bgcolor = $fx.getParam("color_id").hex.rgba
   background(bgcolor);
 
-  //
+  // sample
   drawFxRandomButton()
 }
 
@@ -16,9 +16,13 @@ function draw() {
   const bgcolor = $fx.getParam("color_id").hex.rgba
   background(bgcolor);
 
-  //
+  // sample
   drawFxValues()
 }
+
+// --------------------
+//  samples
+// --------------------
 
 function drawFxValues() {
   const getContrastTextColor = backgroundColor =>

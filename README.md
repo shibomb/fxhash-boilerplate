@@ -1,3 +1,24 @@
+# fx(hash) boilerplate for p5.js
+
+A boilerplate for the creation of generative art that can be published on fx(hash) with p5.js.
+
+## Introduction
+
+This repository contains the most simple and recommended setup to publish a generative artwork on fxhash with p5.js.
+You can do modifications to the existing files, create a zip that contains all of them and upload it on fxhash.xyz.
+
+This are the hard facts of the required setup:
+- A html entry point called `index.html`
+- The `@fxhash/project-sdk` as a local script file included in the html entry point called `./fxhash.js`
+- A script that generates the samples of fx params included in the html entry point called `index.js`
+- A script that generates the generative art included in the html entry point called `p5.js/sketch.js`
+
+---
+
+Original
+
+---
+
 # fx(hash) boilerplate
 
 A boilerplate for the creation of generative art that can be published on fx(hash).
