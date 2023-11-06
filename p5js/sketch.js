@@ -1,30 +1,58 @@
-function setup() {
-  // console.log("setup()")
+function preload() {
+  // console.log(`#preload`)
 
+  // init random seed
+  const seed = ~~($fx.rand() * 123456789)
+  randomSeed(seed)
+  noiseSeed(seed)
+  
+  // preload files
+  // ...
+}
+
+function setup() {
+  // console.log(`#setup`)
   createCanvas(windowWidth, windowHeight);
 
-  const bgcolor = $fx.getParam("color_id").hex.rgba
-  background(bgcolor);
+  // setup
+  // ...
 
   // sample
   drawFxRandomButton()
+  // /sample
+}
+
+function windowResized() {
+  // console.log(`#windowResized (${windowWidth}, ${windowHeight})`)
+  resizeCanvas(windowWidth, windowHeight);
+
+  // window resized
+  // ...
 }
 
 function draw() {
-  // console.log("draw()")
+  // if (frameCount == 1) console.log(`#draw at frameCount ${frameCount}`)
 
   const bgcolor = $fx.getParam("color_id").hex.rgba
   background(bgcolor);
 
   // sample
+  drawCounter()
   drawFxValues()
+  // /sample
+
+  // capture by fxhash
+  if (frameCount == 1) {
+    // console.log(`Call $fx.preview() at frameCount ${frameCount}`)
+    $fx.preview()
+  }
 }
 
 // --------------------
 //  samples
 // --------------------
 
-function drawFxValues() {
+function drawCounter() {
   const getContrastTextColor = backgroundColor =>
     ((parseInt(backgroundColor, 16) >> 16) & 0xff) > 0xaa
       ? "#000000"
@@ -36,18 +64,7 @@ function drawFxValues() {
   noStroke()
   fill(textcolor)
 
-  const valueTexts = [
-    `hash: ${$fx.hash}`,
-    `minter: ${$fx.minter}`,
-    `iteration: ${$fx.iteration}`,
-    `inputBytes: ${$fx.inputBytes}`,
-    `context: ${$fx.context}`,
-    `params:${$fx.stringifyParams($fx.getRawParams())}`
-  ]
-
-  for(let i = 0; i < valueTexts.length; i++) {
-    text(valueTexts[i], 10, i * 20 + 60);
-  }
+  text(`frameCount:${frameCount}`, 10, height - 20);
 }
 
 let btn;
@@ -68,6 +85,28 @@ function drawFxRandomButton() {
   })
 }
 
+function drawFxValues() {
+  const getContrastTextColor = backgroundColor =>
+    ((parseInt(backgroundColor, 16) >> 16) & 0xff) > 0xaa
+      ? "#000000"
+      : "#ffffff"
+
+  const bgcolor = $fx.getParam("color_id").hex.rgba
+  const textcolor = getContrastTextColor(bgcolor.replace("#", ""))
+
+  noStroke()
+  fill(textcolor)
+
+  text(`
+hash: ${$fx.hash}
+minter: ${$fx.minter}
+iteration: ${$fx.iteration}
+inputBytes: ${$fx.inputBytes}
+context: ${$fx.context}
+params:${$fx.stringifyParams($fx.getRawParams())}
+`, 10, 60)
+}
+
 $fx.on(
   "params:update",
   newRawValues => {
@@ -77,6 +116,6 @@ $fx.on(
     return true
   },
   (optInDefault, newValues) => {
-    // console.log("on params:update", [optInDefault, newValues])
+    // 
   }
 )
