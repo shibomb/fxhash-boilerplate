@@ -13,6 +13,19 @@ This are the hard facts of the required setup:
 - A script that generates the samples of fx params included in the html entry point called `index.js`
 - A script that generates the generative art included in the html entry point called `p5.js/sketch.js`
 
+
+### Starting the development environment
+```
+npx fxhash dev
+```
+
+### Building your project
+
+```
+npx fxhash build
+```
+
+
 ---
 
 Original
