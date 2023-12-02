@@ -2,10 +2,10 @@ function preload() {
   // console.log(`#preload`)
 
   // init random seed
-  const seed = ~~($fx.rand() * 123456789)
-  randomSeed(seed)
-  noiseSeed(seed)
-  
+  const seed = ~~($fx.rand() * 123456789);
+  randomSeed(seed);
+  noiseSeed(seed);
+
   // preload files
   // ...
 }
@@ -18,7 +18,7 @@ function setup() {
   // ...
 
   // sample
-  drawFxRandomButton()
+  drawFxRandomButton();
   // /sample
 }
 
@@ -33,18 +33,18 @@ function windowResized() {
 function draw() {
   // if (frameCount == 1) console.log(`#draw at frameCount ${frameCount}`)
 
-  const bgcolor = $fx.getParam("color_id").hex.rgba
+  const bgcolor = $fx.getParam("color_id").hex.rgba;
   background(bgcolor);
 
   // sample
-  drawCounter()
-  drawFxValues()
+  drawCounter();
+  drawFxValues();
   // /sample
 
   // capture by fxhash
   if (frameCount == 1) {
     // console.log(`Call $fx.preview() at frameCount ${frameCount}`)
-    $fx.preview()
+    $fx.preview();
   }
 }
 
@@ -53,23 +53,23 @@ function draw() {
 // --------------------
 
 function drawCounter() {
-  const getContrastTextColor = backgroundColor =>
+  const getContrastTextColor = (backgroundColor) =>
     ((parseInt(backgroundColor, 16) >> 16) & 0xff) > 0xaa
       ? "#000000"
-      : "#ffffff"
+      : "#ffffff";
 
-  const bgcolor = $fx.getParam("color_id").hex.rgba
-  const textcolor = getContrastTextColor(bgcolor.replace("#", ""))
+  const bgcolor = $fx.getParam("color_id").hex.rgba;
+  const textcolor = getContrastTextColor(bgcolor.replace("#", ""));
 
-  noStroke()
-  fill(textcolor)
+  noStroke();
+  fill(textcolor);
 
   text(`frameCount:${frameCount}`, 10, height - 20);
 }
 
 let btn;
 function drawFxRandomButton() {
-  btn = createButton("emit random params")
+  btn = createButton("emit random params");
   btn.position(10, 10);
   btn.mousePressed(() => {
     // console.log("emit params:update")
@@ -81,41 +81,45 @@ function drawFxRandomButton() {
       color_id: $fx.getRandomParam("color_id"),
       boolean_id: $fx.getRandomParam("boolean_id"),
       string_id: $fx.getRandomParam("string_id"),
-    })
-  })
+    });
+  });
 }
 
 function drawFxValues() {
-  const getContrastTextColor = backgroundColor =>
+  const getContrastTextColor = (backgroundColor) =>
     ((parseInt(backgroundColor, 16) >> 16) & 0xff) > 0xaa
       ? "#000000"
-      : "#ffffff"
+      : "#ffffff";
 
-  const bgcolor = $fx.getParam("color_id").hex.rgba
-  const textcolor = getContrastTextColor(bgcolor.replace("#", ""))
+  const bgcolor = $fx.getParam("color_id").hex.rgba;
+  const textcolor = getContrastTextColor(bgcolor.replace("#", ""));
 
-  noStroke()
-  fill(textcolor)
+  noStroke();
+  fill(textcolor);
 
-  text(`
+  text(
+    `
 hash: ${$fx.hash}
 minter: ${$fx.minter}
 iteration: ${$fx.iteration}
 inputBytes: ${$fx.inputBytes}
 context: ${$fx.context}
 params:${$fx.stringifyParams($fx.getRawParams())}
-`, 10, 60)
+`,
+    10,
+    60
+  );
 }
 
 $fx.on(
   "params:update",
-  newRawValues => {
+  (newRawValues) => {
     // opt-out default behaviour
-    if (newRawValues.number_id === 5) return false
+    if (newRawValues.number_id === 5) return false;
     // opt-in default behaviour
-    return true
+    return true;
   },
   (optInDefault, newValues) => {
-    // 
+    //
   }
-)
+);
