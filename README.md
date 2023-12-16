@@ -1,3 +1,17 @@
+# Deprecated!!
+This project will be discontinued in the future.
+
+The fx(hash) NFT art project using it will mix unnecessary files at build time.
+
+I have created a new template template, so please use that.
+
+https://github.com/shibomb/p5js-fxhash-template-template
+
+---
+---
+---
+
+
 # fx(hash) boilerplate for p5.js
 
 A boilerplate for the creation of generative art that can be published on fx(hash) with p5.js.
